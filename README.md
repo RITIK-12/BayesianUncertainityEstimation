@@ -1,4 +1,3 @@
-
 # Bayesian Uncertainty Quantification in Medical Question Answering
 
 <div align="center">
@@ -13,7 +12,7 @@ This project integrates **Bayesian Uncertainty Quantification** into **Large Lan
 ### **Key Features**
 - 🔍 **Bayesian Uncertainty Estimation**: Provides confidence metrics alongside predictions.
 - 🏥 **Medical Domain Expertise**: Fine-tuned models for medical QA.
-- 📊 **Multi-Model Comparison**: Evaluation of Llama 8B, Mistral 7B, and BERT.
+- 📊 **Multi-Model Comparison**: Evaluation of Llama 8B, Mistral 7B, and Gemma 7B.
 - 📈 **Entropy & Mutual Information Analysis**: Measures prediction uncertainty.
 
 ---
@@ -24,7 +23,7 @@ This project integrates **Bayesian Uncertainty Quantification** into **Large Lan
 |------------------|-------------|---------------------|-------------------------|
 | **Llama 3.1 8B** | **54%**     | **1.1305**          | **-1.09e-08**           |
 | **Mistral 7B**   | 31%         | 4.7910              | -1.17e-08              |
-| **BERT**         | 19%         | 1.6094              | 2.36e-08               |
+| **Gemma 7B**     | 21%         | 12.4529             | 9.53e-07               |
 
 <div align="center">
   <img src="assets/entropy_results.png" alt="Entropy Distribution" width="600"/>
@@ -45,7 +44,7 @@ This project integrates **Bayesian Uncertainty Quantification** into **Large Lan
 - **Base Models**:
   - Llama 3.1 8B
   - Mistral 7B
-  - BERT
+  - Gemma 7B
 - **Uncertainty Layer**:
   - Monte Carlo Dropout (p = 0.1)
   - 10 stochastic forward passes.
@@ -83,9 +82,9 @@ pip install -r requirements.txt
 │   ├── Llama/
 │   │   ├── MedQA_Llama_eval.ipynb
 │   │   └── MedQA_Llama_8B_Fine_tuning.ipynb
-│   ├── BERT/
-│   │   ├── MedQA_BERT_eval.ipynb
-│   │   └── BERT_Fine_tuning.ipynb
+│   ├── Gemma/
+│   │   ├── MedQA_Gemma_7B_eval.ipynb
+│   │   └── MedQA_Gemma_7B_Fine_tuning.ipynb
 │   └── Mistral/
 │       ├── MedQA_Mistral_eval.ipynb
 │       └── Mistral_7B_Fine_tuning.ipynb
@@ -102,7 +101,7 @@ The project identified several key limitations:
 1. Due to computational constraints, models could only be fine-tuned for 2 epochs, potentially limiting their ability to learn optimal parameters for the medical domain.
 2. The absence of validation during training, owing to GPU limitations, prevented monitoring for potential overfitting and optimization of training parameters.
 3. The implementation of Monte Carlo Dropout for uncertainty estimation added significant computational overhead during inference.
-4. The relatively high entropy values across all models, particularly evident in Mistral’s broad distribution up to 6.0, indicate challenges in achieving confident predictions in specialized medical domains.
+4. The relatively high entropy values across all models, particularly evident in Mistral's broad distribution up to 6.0, indicate challenges in achieving confident predictions in specialized medical domains.
 5. The trade-off between model size and computational requirements limited the scope of uncertainty analysis techniques that could be implemented.
 
 ---
@@ -112,11 +111,11 @@ The project identified several key limitations:
 If you use this work in your research, please cite:
 
 ```bibtex
-@article{bompilwar2024bayesian,
-  title={Bayesian Uncertainty Quantification for Medical Question Answering using Monte Carlo Dropout},
-  author={Bompilwar, Ritik and Shah, Harsh and Meher, Easha},
+@article{bompilwar2025bayesian,
+  title={Bayesian Uncertainty Quantification in Large Language Models for Medical Question Answering},
+  author={Bompilwar, Ritik},
   institution={Northeastern University},
-  year={2024}
+  year={2025}
 }
 ```
 
@@ -134,7 +133,7 @@ If you use this work in your research, please cite:
 
 5. Wu, J. (2024). Uncertainty Estimation of Large Language Models in Medical Question Answering. *arXiv preprint arXiv:2407.08662*.
 
-6. Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2018). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *arXiv preprint arXiv:1810.04805*.
+6. De Marchi, G. et al. (2023). Gemma: Open Models Based on Gemini Research and Technology. *arXiv preprint arXiv:2403.08295*.
 
 7. Vaswani, A., et al. (2017). Attention is All You Need. *Advances in Neural Information Processing Systems*, 30.
 
